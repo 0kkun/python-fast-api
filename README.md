@@ -42,12 +42,9 @@ name|case|example
 ├── app
 │   ├── api
 │   │   ├── __init__.py
-│   │   ├── endpoints
-│   │   │   ├── __init__.py
-│   │   │   └── some_endpoint.py
-│   │   └── models
+│   │   └── endpoints
 │   │       ├── __init__.py
-│   │       └── some_model.py
+│   │       └── some_endpoint.py
 │   ├── core
 │   │   ├── __init__.py
 │   │   ├── config.py
@@ -56,12 +53,15 @@ name|case|example
 │   │   ├── __init__.py
 │   │   ├── base.py
 │   │   └── session.py
+│   │   └── models/
+│   │       ├── __init__.py
+│   │       └──  some_model.py
 │   └── main.py
 └── docker-compose.yml
 ```
 
 - appディレクトリ: FastAPIアプリケーションのメインディレクトリで、以下のサブディレクトリを持ちます。
-- apiディレクトリ: APIのエンドポイントとモデルを定義するサブディレクトリ。
+- apiディレクトリ: APIのエンドポイントを定義するサブディレクトリ。
 - coreディレクトリ: 設定やセキュリティなどのコアな機能を定義するサブディレクトリ。
 - dbディレクトリ: データベースセッションを管理するサブディレクトリ。
 - main.py: FastAPIアプリケーションのエントリーポイントとなるファイル。
