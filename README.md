@@ -20,6 +20,12 @@ $ make build
 $ make up
 ```
 
+# APIドキュメント
+
+- 自動でSwaggerUIにて出力されている
+
+> http://localhost:8080/docs
+
 # コード規約
 
 `PEP 8`が指針。
