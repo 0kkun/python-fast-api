@@ -27,7 +27,7 @@ build_c:
 
 .PHONY: build
 build:
-	docker-compose build --progress=plain
+	docker-compose build
 
 .PHONY: up
 up:
