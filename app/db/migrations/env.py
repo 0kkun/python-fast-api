@@ -1,6 +1,6 @@
 import sqlalchemy_utils
 # alembicがmodelsの変更を読み取れるようにするために、importしておく必要がある
-from schemas import todo
+from schemas import todo, user
 import database
 from logging.config import fileConfig
 from sqlalchemy import engine_from_config

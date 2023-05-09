@@ -24,7 +24,7 @@ migrate:
 .PHONY: migrate-rollback
 migrate-rollback:
 	@read -p "Enter the number of steps to rollback: " STEPS; \
-	$(DCE) app bash -c "cd db && alembic downgrade $(STEPS)"
+	$(DCE) app bash -c "cd db && alembic downgrade $$STEPS"
 
 .PHONY: migrate-drop
 migrate-drop:
@@ -33,6 +33,12 @@ migrate-drop:
 .PHONy: migrate-log
 migrate-log:
 	$(DCE) app bash -c "cd db && alembic history --verbose"
+
+# schemaで定義したクラスを参照にmigrationファイルを生成する. TITLEの例 : create user
+.PHONY: schema
+schema:
+	@read -p "Enter the migrate title: " TITLE; \
+	$(DCE) app bash -c "cd db && alembic revision --autogenerate -m '$$TITLE'"
 
 # *****************************
 # *     Container Controll    *
