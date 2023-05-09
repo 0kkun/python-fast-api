@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api import health_check, samples, items, tax, todo
+from api import health_check, samples, items, tax, todo, user
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -24,3 +24,4 @@ app.include_router(samples.router, tags=["sample"])
 app.include_router(items.router, tags=["item"], responses={404: {"description": "Not found"}})
 app.include_router(tax.router, tags=["tax"])
 app.include_router(todo.router, tags=["todo"])
+app.include_router(user.router, tags=["user"])
