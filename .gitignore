@@ -2,7 +2,8 @@
 .vscode
 .env
 .idea
-app/__pycache__/
-app/api/__pycache__
-app/db/models/__pycache__
 .docker/db/data
+app/__pycache__
+app/*/__pycache__
+app/*/*/__pycache__
+app/*/*/*/__pycache__

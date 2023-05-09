@@ -17,6 +17,22 @@ init:
 # *      Python Command      *
 # *****************************
 
+.PHONY: migrate
+migrate:
+	$(DCE) app bash -c "cd db && alembic upgrade head"
+
+.PHONY: migrate-rollback
+migrate-rollback:
+	@read -p "Enter the number of steps to rollback: " STEPS; \
+	$(DCE) app bash -c "cd db && alembic downgrade $(STEPS)"
+
+.PHONY: migrate-drop
+migrate-drop:
+	$(DCE) app bash -c "cd db && alembic downgrade base"
+
+.PHONy: migrate-log
+migrate-log:
+	$(DCE) app bash -c "cd db && alembic history --verbose"
 
 # *****************************
 # *     Container Controll    *

@@ -1,5 +1,11 @@
 from fastapi import APIRouter
-from db.models.tax import Tax
+# from db.models.tax import Tax
+
+from pydantic import BaseModel
+
+class Tax(BaseModel):
+    cost: int
+    tax_rate: float
 
 router = APIRouter()
 
