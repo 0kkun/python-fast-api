@@ -1,22 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
-from typing import List
 from sqlalchemy.orm import Session
+from schemas.user import User
+from models.user import UserList, UserCreate
+from database import get_db
 
-class UserList(BaseModel):
-    __root__: List[User]
 
 router = APIRouter()
 
-@router.post("/todos")
-async def create_user(todo: TodoCreate, db: Session = Depends(get_db)):
-    db_todo = todo(title=todo.title, content=todo.content)
-    db.add(db_todo)
-    db.commit()
-    db.refresh(db_todo)
-    return db_todo
-
-@router.get("/users/", response_model=UserList)
+@router.get("/users", response_model=UserList)
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = db.query(User).offset(skip).limit(limit).all()
     return {"__root__": users}

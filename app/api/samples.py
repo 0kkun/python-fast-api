@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from typing import List
-# from db.models.sample import Sample
 from models.sample import Sample
 
 router = APIRouter()

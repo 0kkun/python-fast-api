@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from schemas.todo import Todo
 from models.todo import TodoCreate, TodoList
@@ -10,7 +9,7 @@ router = APIRouter()
 @router.get("/todos", response_model=TodoList)
 async def get_todos(db: Session = Depends(get_db)):
     todos = db.query(Todo).all()
-    return TodoList(todos=todos)
+    return {"__root__": todos}
 
 @router.post("/todos")
 async def create_todos(todo_create: TodoCreate, db: Session = Depends(get_db)):

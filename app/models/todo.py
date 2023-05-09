@@ -19,4 +19,4 @@ class TodoCreate(BaseModel):
     done: bool = Field(None, description='完了したかどうか')
 
 class TodoList(BaseModel):
-    todos: List[Todo]
+    __root__: List[Todo]
